@@ -55,7 +55,7 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
             [
               'name' => 'locationname_typography',
               'label' => __('Typography place name', 'plugin-domain'),
-              'selector' => '{{WRAPPER}} .event__locationname',
+              'selector' => '{{WRAPPER}} .event__location__name',
             ]
         );
         $this->add_group_control(
@@ -63,7 +63,7 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
             [
               'name' => 'locationdesc_typography',
               'label' => __('Typography description', 'plugin-domain'),
-              'selector' => '{{WRAPPER}} .event__locationdesc',
+              'selector' => '{{WRAPPER}} .event__location__desc',
             ]
         );
         $this->end_controls_section();
@@ -80,11 +80,12 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
         $locationId = get_post_meta($id, 'mec_location_id', true);
         if ($locationId != 1) {
             $location = get_term($locationId);
-            $desc = get_term_by('term_id', $location->id, "mce_location");
+            $address = get_term_meta($locationId, "address", true);
             echo '<div class="event__location">';
-            echo '<div class="event__locationname">'.$location->name.'</div>';
+            echo '<div class="event__location__name">'.$location->name.'</div>';
+            echo '<div class="event__location__address">'.$address.'</div>';
             if ($settings["show_desc"]) {
-                echo '<div class="event__locationdesc">'.$location->description.'</div>';
+                echo '<div class="event__location__desc">'.$location->description.'</div>';
             }
             echo '</div>';
         }

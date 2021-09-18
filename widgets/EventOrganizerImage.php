@@ -1,14 +1,14 @@
 <?php
-class Elementor_Widget_MCE_EventPlaceImage extends \Elementor\Widget_Base
+class Elementor_Widget_MCE_EventOrganizerImage extends \Elementor\Widget_Base
 {
     public function get_name()
     {
-        return 'event_place_image';
+        return 'event_organizer_image';
     }
 
     public function get_title()
     {
-        return __('Event place image', 'mec_lite_dp');
+        return __('Event organizer image', 'mec_lite_dp');
     }
 
     public function get_icon()
@@ -33,10 +33,10 @@ class Elementor_Widget_MCE_EventPlaceImage extends \Elementor\Widget_Base
         $query = get_posts($args);
         $id = $query[0]->ID;
         $meta = get_post_meta($id);
-        $locationId = get_post_meta($id, 'mec_location_id', true);
-        if ($locationId != 1) {
-            $image = get_term_meta($locationId, "thumbnail", true);
-            echo '<div class="event__location__image">';
+        $organizerId = get_post_meta($id, 'mec_organizer_id', true);
+        if ($organizerId != 1) {
+            $image = get_term_meta($organizerId, "thumbnail", true);
+            echo '<div class="event__organizer__image">';
             echo '<img src="'.$image.'"/>';
             echo '</div>';
         }

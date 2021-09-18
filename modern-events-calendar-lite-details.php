@@ -78,12 +78,16 @@ add_action('init', static function () {
     require_once(__DIR__ . '/widgets/EventContent.php');
     require_once(__DIR__ . '/widgets/EventPlace.php');
     require_once(__DIR__ . '/widgets/EventPlaceImage.php');
+    require_once(__DIR__ . '/widgets/EventOrganizerImage.php');
+    require_once(__DIR__ . '/widgets/EventOrganizer.php');
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventTitle());
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventDateStart());
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventDateEnd());
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventContent());
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventPlace());
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventPlaceImage());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventOrganizerImage());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventOrganizer());
 });
 
 
