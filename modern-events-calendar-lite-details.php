@@ -11,12 +11,18 @@
 add_action('admin_init', 'mec_lite_dp_register_settings');
 add_action('admin_menu', 'addMenu');
 add_action('init', 'custom_rewrite_rules');
-
+add_action('wp_enqueue_scripts', 'enqueue_style');
 
 function mec_lite_dp_register_settings()
 {
     add_option('mec_lite_dp', "");
     register_setting('mec_lite_dp_option_group', 'mec_lite_dp', 'sanitize_text_field');
+}
+
+function enqueue_style()
+{
+    wp_register_style('mec_lite_dp', plugins_url('style.css', __FILE__));
+    wp_enqueue_style('mec_lite_dp');
 }
 
 function custom_rewrite_rules()

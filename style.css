@@ -1,0 +1,8 @@
+.event__datetime {
+  display: flex;
+  flex-direction: column;
+}
+
+.event__date {
+  font-weight: bold;
+}

@@ -23,7 +23,22 @@ class Elementor_Widget_MCE_EventContent extends \Elementor\Widget_Base
 
     protected function _register_controls()
     {
-        $this->end_controls_section();
+      $this->start_controls_section(
+          'style_section',
+          [
+            'label' => __('Style', 'mec_lite_dp'),
+            'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+          ]
+      );
+      $this->add_group_control(
+          \Elementor\Group_Control_Typography::get_type(),
+          [
+            'name' => 'content_typography',
+            'label' => __('Typography', 'plugin-domain'),
+            'selector' => '{{WRAPPER}} .event__content',
+          ]
+      );
+      $this->end_controls_section();
     }
 
     protected function render()
@@ -33,9 +48,9 @@ class Elementor_Widget_MCE_EventContent extends \Elementor\Widget_Base
         $query = get_posts($args);
         $id = $query[0]->ID;
         if (!empty(get_post_field("post_content", $id))) {
-            echo '<p>'.get_post_field("post_content", $id).'</p>';
+            echo '<div class="event__content"><p>'.get_post_field("post_content", $id).'</p></div>';
         } elseif (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
-            echo '<p><i>no content - the event detail text will be visible here</i></p>';
+            echo '<div class="event__content"><p><i>no content - the event detail text will be visible here</i></p></div>';
         }
     }
 

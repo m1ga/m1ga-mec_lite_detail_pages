@@ -1,5 +1,7 @@
 # Modern Events Calendar Lite - Detail pages
 
+<img src="images/elementor_page.png"/>
+
 With this plugin you can select a normal page as an event detail page and you will get some Elementor compontents to show the event details.
 
 ## Requirements

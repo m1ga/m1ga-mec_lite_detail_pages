@@ -32,6 +32,18 @@ class Elementor_Widget_MCE_EventDateEnd extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'show_date',
+            [
+                        'label' => __('Show date', 'mec_lite_dp'),
+                        'type' => \Elementor\Controls_Manager::SWITCHER,
+                        'label_on' => __('Show', 'mec_lite_dp'),
+                        'label_off' => __('Hide', 'mec_lite_dp'),
+                        'return_value' => 'yes',
+                        'default' => 'yes',
+                    ]
+        );
+
+        $this->add_control(
             'date_format',
             [
                 'label' => __('Date format', 'mec_lite_dp'),
@@ -42,12 +54,49 @@ class Elementor_Widget_MCE_EventDateEnd extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'show_time',
+            [
+                        'label' => __('Show time', 'mec_lite_dp'),
+                        'type' => \Elementor\Controls_Manager::SWITCHER,
+                        'label_on' => __('Show', 'mec_lite_dp'),
+                        'label_off' => __('Hide', 'mec_lite_dp'),
+                        'return_value' => 'yes',
+                        'default' => 'yes',
+                    ]
+        );
+        $this->add_control(
             'time_format',
             [
                 'label' => __('Time format', 'mec_lite_dp'),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => __('H:i', 'mec_lite_dp'),
                 'placeholder' => __('Custom php time format', 'mec_lite_dp'),
+            ]
+        );
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'style_date_section',
+            [
+              'label' => __('Date style', 'mec_lite_dp'),
+              'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+              'name' => 'date_typography',
+              'label' => __('Date typography', 'plugin-domain'),
+              'selector' => '{{WRAPPER}} .event__date',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+              'name' => 'time_typography',
+              'label' => __('Time typography', 'plugin-domain'),
+              'selector' => '{{WRAPPER}} .event__time',
             ]
         );
 
@@ -61,13 +110,17 @@ class Elementor_Widget_MCE_EventDateEnd extends \Elementor\Widget_Base
         $args = array("post_type" => "mec-events", "name" => get_query_var("event_id"));
         $query = get_posts($args);
         $id = $query[0]->ID;
-        $date = strtotime(get_post_meta($id, 'mec_end_date', true));
+        $meta = get_post_meta($id);
+
         $allday = get_post_meta($id, 'mec_allday', true);
+        $date = strtotime(get_post_meta($id, 'mec_end_date', true));
         $formatedDate = date($settings['date_format'], $date);
 
         echo '<div class="event__datetime">';
-        echo '<time class="event__date" datetime="'.$formatedDate. ' ' . $formatedTime.'">'. $formatedDate .'</time>';
-        if (!$allday) {
+        if ($settings["show_date"]) {
+            echo '<time class="event__date" datetime="'.$formatedDate. ' ' . $formatedTime.'">'. $formatedDate .'</time>';
+        }
+        if (!$allday && $settings["show_time"]) {
             $seconds = get_post_meta($id, 'mec_end_day_seconds', true);
             $formatedTime = date($settings['time_format'], $seconds);
             echo '<time class="event__time" datetime="'.$formatedDate. ' ' . $formatedTime.'">'. $formatedTime .'</time>';
