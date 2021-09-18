@@ -2,7 +2,7 @@
 
 <img src="images/elementor_page.png"/>
 
-With this plugin you can select a normal page as an event detail page and you will get some Elementor compontents to show the event details.
+With this plugin you can select a normal page as an event detail page and you will get some Elementor components to show the event details.
 
 <img src="images/elementor_page_frontend.png"/>
 
@@ -30,8 +30,17 @@ With this plugin you can select a normal page as an event detail page and you wi
 
 <img src="images/elementor.png/">
 
-* inside Elementor you will have a `MCE Lite Components` category with compontents for every event item
+* inside Elementor you will have a `MCE Lite Components` category with components for every event item
 
+## Current components
+* event title
+* event description
+* date start
+* date end
+* organizer name
+* organizer image
+* place
+* place image
 
 ## Author
 
