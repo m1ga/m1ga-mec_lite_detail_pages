@@ -13,7 +13,7 @@ class Elementor_Widget_MCE_EventDateEnd extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-text';
+        return 'eicon-calendar';
     }
 
     public function get_categories()

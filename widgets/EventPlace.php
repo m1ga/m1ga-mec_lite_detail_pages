@@ -13,7 +13,7 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-text';
+        return 'eicon-map-pin';
     }
 
     public function get_categories()
