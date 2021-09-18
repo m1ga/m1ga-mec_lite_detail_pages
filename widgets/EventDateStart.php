@@ -73,6 +73,28 @@ class Elementor_Widget_MCE_EventDateStart extends \Elementor\Widget_Base
                 'placeholder' => __('Custom php time format', 'mec_lite_dp'),
             ]
         );
+        $this->add_control(
+            'show_allday',
+            [
+                        'label' => __('Show all-day text', 'mec_lite_dp'),
+                        'type' => \Elementor\Controls_Manager::SWITCHER,
+                        'label_on' => __('Show', 'mec_lite_dp'),
+                        'label_off' => __('Hide', 'mec_lite_dp'),
+                        'return_value' => 'yes',
+                        'default' => 'yes',
+                    ]
+        );
+        $this->add_control(
+            'allday_text',
+            [
+                'label' => __('All-day text', 'mec_lite_dp'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __('All day', 'mec_lite_dp'),
+                'placeholder' => __('Custom php time format', 'mec_lite_dp'),
+            ]
+        );
+
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -120,10 +142,16 @@ class Elementor_Widget_MCE_EventDateStart extends \Elementor\Widget_Base
         if ($settings["show_date"]) {
             echo '<time class="event__date" datetime="'.$formatedDate. ' ' . $formatedTime.'">'. $formatedDate .'</time>';
         }
-        if (!$allday && $settings["show_time"]) {
-            $seconds = get_post_meta($id, 'mec_start_day_seconds', true);
-            $formatedTime = date($settings['time_format'], $seconds);
-            echo '<time class="event__time" datetime="'.$formatedDate. ' ' . $formatedTime.'">'. $formatedTime .'</time>';
+        if (!$allday) {
+            if ($settings["show_time"]) {
+                $seconds = get_post_meta($id, 'mec_start_day_seconds', true);
+                $formatedTime = date($settings['time_format'], $seconds);
+                echo '<time class="event__time" datetime="'.$formatedDate. ' ' . $formatedTime.'">'. $formatedTime .'</time>';
+            }
+        } else {
+            if ($settings["show_allday"]) {
+                echo '<time class="event__time" datetime="'.$formatedDate.'">'. $settings['allday_text'] .'</time>';
+            }
         }
         echo '</div>';
     }
