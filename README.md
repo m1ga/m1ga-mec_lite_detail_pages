@@ -12,3 +12,11 @@ With this plugin you can select a normal page as an event detail page and you wi
 
 * Install MEC Lite and Elementor first
 * Download and install this plugin
+
+## How to use it
+
+<img src="images/how_to.png/">
+
+* Go to 'M.E. Calender - Custom detail page'
+* Add the ID of your custom page
+* Save the changes
