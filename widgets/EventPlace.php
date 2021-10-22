@@ -54,7 +54,7 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
               'name' => 'locationname_typography',
-              'label' => __('Typography place name', 'plugin-domain'),
+              'label' => __('Typography place name', 'mec_lite_dp'),
               'selector' => '{{WRAPPER}} .event__location__name',
             ]
         );
@@ -62,8 +62,23 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
               'name' => 'locationdesc_typography',
-              'label' => __('Typography description', 'plugin-domain'),
+              'label' => __('Typography description', 'mec_lite_dp'),
               'selector' => '{{WRAPPER}} .event__location__desc',
+            ]
+        );
+
+        $this->add_control(
+            'event_place_color',
+            [
+                'label' => __('Title Color', 'mec_lite_dp'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .event__location' => 'color: {{VALUE}}',
+                ],
             ]
         );
         $this->end_controls_section();
@@ -81,7 +96,7 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
         if ($locationId != 1) {
             $location = get_term($locationId);
             $address = get_term_meta($locationId, "address", true);
-            echo '<div class="event__location">';
+            echo '<div class="event__location" style="color: ' . $settings['event_place_color'] . '">';
             echo '<div class="event__location__name">'.$location->name.'</div>';
             echo '<div class="event__location__address">'.$address.'</div>';
             if ($settings["show_desc"]) {

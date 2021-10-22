@@ -23,6 +23,37 @@ class Elementor_Widget_MCE_EventOrganizer extends \Elementor\Widget_Base
 
     protected function _register_controls()
     {
+      $this->start_controls_section(
+          'style_section',
+          [
+            'label' => __('Style', 'mec_lite_dp'),
+            'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+          ]
+      );
+      $this->add_group_control(
+          \Elementor\Group_Control_Typography::get_type(),
+          [
+            'name' => 'content_typography',
+            'label' => __('Typography', 'mec_lite_dp'),
+            'selector' => '{{WRAPPER}} .event__organizer',
+          ]
+      );
+
+      $this->add_control(
+          'event_organizer_color',
+          [
+              'label' => __('Title Color', 'mec_lite_dp'),
+              'type' => \Elementor\Controls_Manager::COLOR,
+              'scheme' => [
+                  'type' => \Elementor\Scheme_Color::get_type(),
+                  'value' => \Elementor\Scheme_Color::COLOR_1,
+              ],
+              'selectors' => [
+                  '{{WRAPPER}} .event__organizer' => 'color: {{VALUE}}',
+              ],
+          ]
+      );
+      $this->end_controls_section();
     }
 
     protected function render()
@@ -38,7 +69,7 @@ class Elementor_Widget_MCE_EventOrganizer extends \Elementor\Widget_Base
             $organizer = get_term($organizerId);
             $phone = get_term_meta($organizerId, "tel", true);
             $mail = get_term_meta($organizerId, "mail", true);
-            echo '<div class="event__organizer">';
+            echo '<div class="event__organizer"  style="color: ' . $settings['event_organizer_color'] . '">';
             echo '<div class="event__organizer__name">'.$organizer->name.'</div>';
             echo '<div class="event__organizer__desc">'.$organizer->description.'</div>';
             echo '<div class="event__organizer__phone">'.$phone.'</div>';

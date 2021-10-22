@@ -34,8 +34,22 @@ class Elementor_Widget_MCE_EventContent extends \Elementor\Widget_Base
           \Elementor\Group_Control_Typography::get_type(),
           [
             'name' => 'content_typography',
-            'label' => __('Typography', 'plugin-domain'),
+            'label' => __('Typography', 'mec_lite_dp'),
             'selector' => '{{WRAPPER}} .event__content',
+          ]
+      );
+      $this->add_control(
+          'event_content_color',
+          [
+              'label' => __('Title Color', 'mec_lite_dp'),
+              'type' => \Elementor\Controls_Manager::COLOR,
+              'scheme' => [
+                  'type' => \Elementor\Scheme_Color::get_type(),
+                  'value' => \Elementor\Scheme_Color::COLOR_1,
+              ],
+              'selectors' => [
+                  '{{WRAPPER}} .event__content' => 'color: {{VALUE}}',
+              ],
           ]
       );
       $this->end_controls_section();
@@ -48,9 +62,9 @@ class Elementor_Widget_MCE_EventContent extends \Elementor\Widget_Base
         $query = get_posts($args);
         $id = $query[0]->ID;
         if (!empty(get_post_field("post_content", $id))) {
-            echo '<div class="event__content"><p>'.get_post_field("post_content", $id).'</p></div>';
+            echo '<div class="event__content"><p  style="color: ' . $settings['event_content_color'] . '">'.get_post_field("post_content", $id).'</p></div>';
         } elseif (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
-            echo '<div class="event__content"><p><i>no content - the event detail text will be visible here</i></p></div>';
+            echo '<div class="event__content" ><p style="color: ' . $settings['event_content_color'] . '"><i>no content - the event detail text will be visible here</i></p></div>';
         }
     }
 
