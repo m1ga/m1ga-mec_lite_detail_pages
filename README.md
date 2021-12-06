@@ -8,7 +8,7 @@ With this plugin you can select a normal page as an event detail page and you wi
 
 ## Requirements
 
-* Download and install [Elementor](https://elementor.com/?ref=26724)
+* Download and install [Elementor](https://trk.elementor.com/26724)
 * Get [Modern Events Calendar Lite](https://webnus.net/modern-events-calendar/) by webnus
 
 
