@@ -34,7 +34,4 @@ class Elementor_Widget_MCE_EventDateStart extends \Elementor\Widget_Base
         require("EventDateRender.php");
     }
 
-    protected function _content_template()
-    {
-    }
 }

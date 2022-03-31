@@ -73,8 +73,8 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
                 'label' => __('Title Color', 'mec_lite_dp'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .event__location' => 'color: {{VALUE}}',
@@ -106,7 +106,4 @@ class Elementor_Widget_MCE_EventPlace extends \Elementor\Widget_Base
         }
     }
 
-    protected function _content_template()
-    {
-    }
 }

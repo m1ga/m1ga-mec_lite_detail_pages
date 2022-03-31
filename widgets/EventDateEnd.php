@@ -33,8 +33,4 @@ class Elementor_Widget_MCE_EventDateEnd extends \Elementor\Widget_Base
         $var_get2 = 'mec_end_day_seconds';
         require("EventDateRender.php");
     }
-
-    protected function _content_template()
-    {
-    }
 }

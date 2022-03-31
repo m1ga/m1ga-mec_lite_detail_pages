@@ -96,8 +96,8 @@ class Elementor_Widget_MCE_EventTitle extends \Elementor\Widget_Base
                 'label' => __('Title Color', 'mec_lite_dp'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .event__title' => 'color: {{VALUE}}',
@@ -115,9 +115,5 @@ class Elementor_Widget_MCE_EventTitle extends \Elementor\Widget_Base
         $query = get_posts($args);
         $id = $query[0]->ID;
         echo '<'.$settings['title_tag'].' class="event__title" style="text-align: ' . $settings['event_title_align'] . '; color: ' . $settings['event_title_color'] . '">'.get_the_title($id).'</'.$settings['title_tag'].'>';
-    }
-
-    protected function _content_template()
-    {
     }
 }

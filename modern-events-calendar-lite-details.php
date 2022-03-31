@@ -3,7 +3,7 @@
 * Plugin Name: Modern Events Calendar Lite - Detail pages
 * Plugin URI: https://github.com/m1ga/mec_lite_elementor
 * Description: Link to normal pages for Modern Events Calendar Lite event details and edit them with Elementor
-* Version: 1.2
+* Version: 1.3
 * Author: Michael Gangolf
 * Author URI: https://www.migaweb.de/
 **/
@@ -84,25 +84,14 @@ add_action('init', static function () {
     require_once(__DIR__ . '/widgets/EventOrganizer.php');
 
 
-    if (version_compare(ELEMENTOR_VERSION, "3.5.0", '>')) {
-        \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventTitle());
-        \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventDateStart());
-        \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventDateEnd());
-        \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventContent());
-        \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventPlace());
-        \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventPlaceImage());
-        \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventOrganizerImage());
-        \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventOrganizer());
-    } else {
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventTitle());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventDateStart());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventDateEnd());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventContent());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventPlace());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventPlaceImage());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventOrganizerImage());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Elementor_Widget_MCE_EventOrganizer());
-    }
+    \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventTitle());
+    \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventDateStart());
+    \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventDateEnd());
+    \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventContent());
+    \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventPlace());
+    \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventPlaceImage());
+    \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventOrganizerImage());
+    \Elementor\Plugin::instance()->widgets_manager->register(new \Elementor_Widget_MCE_EventOrganizer());
 });
 
 

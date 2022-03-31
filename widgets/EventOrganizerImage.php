@@ -42,7 +42,4 @@ class Elementor_Widget_MCE_EventOrganizerImage extends \Elementor\Widget_Base
         }
     }
 
-    protected function _content_template()
-    {
-    }
 }
